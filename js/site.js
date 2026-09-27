@@ -66,10 +66,6 @@ function chrome(data, active) {
   const brand = meta.logo
     ? `<a class="brand-logo" href="index.html"><img src="${esc(meta.logo)}" alt="${esc(meta.name || "安徽省烟花爆竹协会")}"></a>`
     : `<div class="brand"><div class="seal">皖<br>协</div><div><h1>${esc(meta.name || "安徽省烟花爆竹协会")}</h1><p>${esc(meta.nameEn || "")}</p></div></div>`;
-  const aside = `<a class="header-aside" href="page.html?slug=contact">
-      <span>联系电话</span><strong>${esc(meta.phone || "0551-65735813")}</strong>
-      <span>办公地址</span><em>${esc(meta.address || "合肥市高新区玉兰大道777号双赢大厦16楼")}</em>
-    </a>`;
   const dropdown = (items) => items.length
     ? `<div class="dropdown">${items.map((item) => `<a href="${item.href}">${esc(item.label)}</a>`).join("")}</div>`
     : "";
@@ -82,7 +78,10 @@ function chrome(data, active) {
   const links = (data.friendLinks || []).map((item) => `<a href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.name)}</a>`).join("");
   return `
     <div class="topbar"><div class="wrap"><span>欢迎访问${esc(meta.name || "安徽省烟花爆竹协会")}</span><span>电话 ${esc(meta.phone || "")}</span></div></div>
-    <header class="header"><div class="wrap">${brand}${aside}</div></header>
+    <header class="header">
+      <div class="sky-fire" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="wrap">${brand}</div>
+    </header>
     <nav class="nav"><div class="wrap">
       <button class="nav-toggle" type="button" aria-label="打开菜单">菜单</button>
       <ul class="menu">
