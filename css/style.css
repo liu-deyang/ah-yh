@@ -90,17 +90,17 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 .panel h2 a, .block h2 a { color: #fff; font-size: 12px; font-weight: 400; }
 .news-list { list-style: none; margin: 0; padding: 6px 0; }
-.news-list li { display: flex; gap: 12px; align-items: baseline; padding: 8px 16px; border-bottom: 1px dashed var(--line); }
+.news-list li { display: flex; gap: 12px; align-items: baseline; min-width: 0; padding: 8px 16px; border-bottom: 1px dashed var(--line); }
 .news-list li:last-child { border-bottom: 0; }
 .news-list a { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .news-list a:hover { color: var(--red); }
 .news-list time { color: var(--muted); font-size: 13px; flex: none; }
 
-.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 18px 0 8px; }
-.block { background: var(--card); border: 1px solid var(--line); }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding: 18px 0 8px; }
+.block { background: var(--card); border: 1px solid var(--line); min-width: 0; overflow: hidden; }
 .about {
   margin: 22px 0; background: var(--red-dark); color: #f4fbff;
-  display: grid; grid-template-columns: 280px 1.4fr .8fr; gap: 24px; padding: 28px; align-items: center;
+  display: grid; grid-template-columns: minmax(0, 280px) minmax(0, 1.4fr) minmax(0, 0.8fr); gap: 24px; padding: 28px; align-items: center;
 }
 .about-photo { width: 100%; height: 180px; object-fit: cover; display: block; }
 .about h2 { margin: 0 0 8px; font-family: "Noto Serif SC", serif; font-size: 26px; font-weight: 700; }
