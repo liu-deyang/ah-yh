@@ -157,12 +157,44 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .side a:hover, .side a.on { color: var(--red); background: #eef6fb; }
 .article, .doc { background: var(--card); border: 1px solid var(--line); padding: 28px 32px 36px; }
 .article h1, .doc h1 { margin: 0 0 10px; font-family: "Noto Serif SC", serif; font-size: 28px; line-height: 1.4; }
-.meta { color: var(--muted); font-size: 13px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
-.prose { font-size: 16px; line-height: 1.95; }
-.prose p { margin: 0 0 1em; }
-.prose img { display: block; margin: 12px auto; }
+/* 正文页：标题居中，日期栏通栏，和原站文章页一致 */
+.read { padding: 0 0 36px; }
+.read > h1 {
+  margin: 0;
+  padding: 22px 32px 0;
+  text-align: center;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #4a5560;
+}
+.crumb-bar {
+  background: #f4f5f6;
+  border: 1px solid #e6e6e6;
+  color: #666;
+  font-size: 14px;
+  padding: 10px 14px;
+  margin-bottom: 0;
+}
+.crumb-bar a { color: #333; text-decoration: underline; }
+.meta {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin: 16px 0 0;
+  padding: 10px 16px;
+  background: #f3f3f3;
+  border-bottom: 1px dashed #cfcfcf;
+}
+.prose { font-size: 16px; line-height: 2; color: #3a4550; padding: 18px 36px 0; }
+.prose p { margin: 0 0 0.75em; }
+.prose p.indent { text-indent: 2em; text-align: justify; }
+.prose p.center-line { text-align: center; font-weight: 700; text-indent: 0; margin: 1.05em 0 0.55em; }
+.prose p.sign-line { text-align: right; text-indent: 0; }
+.prose img { display: block; max-width: 100%; height: auto; margin: 12px auto; }
 .prose table { width: 100%; border-collapse: collapse; margin: 12px 0; }
-.prose td, .prose th { border: 1px solid var(--line); padding: 8px; }
+.prose td, .prose th { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+.prose td p, .prose th p { margin: 0; text-indent: 0; }
 .list-title { margin: 0 0 12px; font-family: "Noto Serif SC", serif; font-size: 26px; }
 .empty { padding: 28px 16px; color: var(--muted); }
 
@@ -218,4 +250,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   .nav.open .menu > li:hover > .dropdown, .nav.open .menu > li.open > .dropdown { display: block; }
   .brand h1 { font-size: 22px; }
   .article, .doc { padding: 18px 16px 28px; }
+  .read { padding: 0 0 24px; }
+  .read > h1 { padding: 16px 16px 0; font-size: 22px; }
+  .prose { padding: 14px 16px 0; }
 }

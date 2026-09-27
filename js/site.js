@@ -209,6 +209,36 @@ function renderList(data) {
   document.title = `${title} - 安徽省烟花爆竹协会`;
 }
 
+function docMeta(item) {
+  return `<div class="meta">发布日期：${esc(item.date || "")}&nbsp;&nbsp;信息来源：${esc(item.source || "")}&nbsp;&nbsp;浏览量：${esc(item.views || "")}</div>`;
+}
+
+// 原站用 align=center 标章节标题，抓取时被去掉了。整段加粗的短句按标题居中，其余正文首行缩进。
+function dressProse(root) {
+  root.querySelectorAll("p").forEach((p) => {
+    if (p.closest("table")) return;
+    const raw = (p.textContent || "").replace(/\u00a0/g, " ");
+    const text = raw.trim();
+    if (!text) {
+      p.remove();
+      return;
+    }
+    const plain = text.replace(/\s+/g, "");
+    const bold = [...p.querySelectorAll("strong, b")].map((node) => node.textContent.replace(/\s+/g, "")).join("");
+    if (bold && plain.length <= 40 && bold.length / plain.length >= 0.75) {
+      p.classList.add("center-line");
+      return;
+    }
+    if (/^\s{8,}/.test(raw)) {
+      p.classList.add("sign-line");
+      return;
+    }
+    if (!/^第[0-9一二三四五六七八九十百零]+条/.test(plain) && !/^[（(][0-9一二三四五六七八九十]+[）)]/.test(plain)) {
+      p.classList.add("indent");
+    }
+  });
+}
+
 function renderArticle(data) {
   const item = (data.articles || []).find((article) => article.id === qs("id"));
   const main = app.querySelector("#main");
@@ -217,19 +247,22 @@ function renderArticle(data) {
     return;
   }
   const cat = (item.categories || [])[0] || "";
-  const bits = [item.date, item.source ? `来源：${item.source}` : "", item.views ? `浏览：${item.views}` : ""].filter(Boolean);
+  const catLabel = catName(data, cat) || "新闻";
   main.innerHTML = `
     <div class="wrap page">
-      <div class="crumb"><a href="index.html">首页</a> / <a href="list.html?cat=${esc(cat)}">${esc(catName(data, cat) || "新闻")}</a> / 正文</div>
       <div class="layout">
         ${sideNav(data, "cat:" + cat)}
-        <article class="article">
-          <h1>${esc(item.title)}</h1>
-          <div class="meta">${esc(bits.join("　"))}</div>
-          <div class="prose">${sanitize(item.html) || "<p>暂无正文</p>"}</div>
-        </article>
+        <div>
+          <div class="crumb-bar">当前位置：<a href="index.html">首页</a> &gt;&gt; <a href="list.html?cat=${esc(cat)}">${esc(catLabel)}</a></div>
+          <article class="article read">
+            <h1>${esc(item.title)}</h1>
+            ${docMeta(item)}
+            <div class="prose">${sanitize(item.html) || "<p>暂无正文</p>"}</div>
+          </article>
+        </div>
       </div>
     </div>`;
+  dressProse(main.querySelector(".prose"));
   document.title = `${item.title} - 安徽省烟花爆竹协会`;
 }
 
@@ -242,15 +275,19 @@ function renderPage(data) {
   }
   main.innerHTML = `
     <div class="wrap page">
-      <div class="crumb"><a href="index.html">首页</a> / ${esc(item.title)}</div>
       <div class="layout">
         ${sideNav(data, "page:" + item.slug)}
-        <article class="doc">
-          <h1>${esc(item.title)}</h1>
-          <div class="prose">${sanitize(item.html) || "<p>暂无内容</p>"}</div>
-        </article>
+        <div>
+          <div class="crumb-bar">当前位置：<a href="index.html">首页</a> &gt;&gt; ${esc(item.title)}</div>
+          <article class="doc read">
+            <h1>${esc(item.title)}</h1>
+            ${docMeta(item)}
+            <div class="prose">${sanitize(item.html) || "<p>暂无内容</p>"}</div>
+          </article>
+        </div>
       </div>
     </div>`;
+  dressProse(main.querySelector(".prose"));
   document.title = `${item.title} - 安徽省烟花爆竹协会`;
 }
 
