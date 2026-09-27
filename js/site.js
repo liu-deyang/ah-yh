@@ -63,9 +63,9 @@ function chrome(data, active) {
   const meta = data.meta || {};
   const pages = data.pages || [];
   const aboutKids = pages.filter((item) => item.group === "协会概况");
-  const logo = meta.logo
-    ? `<img src="${esc(meta.logo)}" alt="">`
-    : "皖<br>协";
+  const brand = meta.logo
+    ? `<a class="brand-logo" href="index.html"><img src="${esc(meta.logo)}" alt="${esc(meta.name || "安徽省烟花爆竹协会")}"></a>`
+    : `<div class="brand"><div class="seal">皖<br>协</div><div><h1>${esc(meta.name || "安徽省烟花爆竹协会")}</h1><p>${esc(meta.nameEn || "")}</p></div></div>`;
   const dropdown = (items) => items.length
     ? `<div class="dropdown">${items.map((item) => `<a href="${item.href}">${esc(item.label)}</a>`).join("")}</div>`
     : "";
@@ -78,10 +78,7 @@ function chrome(data, active) {
   const links = (data.friendLinks || []).map((item) => `<a href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.name)}</a>`).join("");
   return `
     <div class="topbar"><div class="wrap"><span>欢迎访问${esc(meta.name || "安徽省烟花爆竹协会")}</span><span>电话 ${esc(meta.phone || "")}</span></div></div>
-    <header class="header"><div class="wrap brand">
-      <div class="seal">${logo}</div>
-      <div><h1>${esc(meta.name || "安徽省烟花爆竹协会")}</h1><p>${esc(meta.nameEn || "")}</p></div>
-    </div></header>
+    <header class="header"><div class="wrap">${brand}</div></header>
     <nav class="nav"><div class="wrap">
       <button class="nav-toggle" type="button" aria-label="打开菜单">菜单</button>
       <ul class="menu">
@@ -138,6 +135,7 @@ function renderHome(data) {
     ? `<div class="slider">${slides}<div class="dots">${dots}</div></div>`
     : `<div class="slider"><div class="slide on"><span>安徽省烟花爆竹协会</span></div></div>`;
   const meta = data.meta || {};
+  const cover = banners[1] || banners[0];
   app.querySelector("#main").innerHTML = `
     <div class="wrap">
       <section class="hero">
@@ -150,6 +148,7 @@ function renderHome(data) {
         ${panel("会长单位", "list.html?cat=president", articlesIn(data, "president").slice(0, 6))}
       </section>
       <section class="about">
+        ${cover ? `<img class="about-photo" src="${esc(cover.image)}" alt="${esc(cover.title)}">` : ""}
         <div>
           <h2>协会简介</h2>
           <p>${esc(meta.summary || "安徽省烟花爆竹协会成立于2002年4月，是全省性社会团体。")}</p>
