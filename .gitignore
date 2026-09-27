@@ -1,0 +1,4 @@
+config.txt
+_sample*
+__pycache__/
+*.pyc

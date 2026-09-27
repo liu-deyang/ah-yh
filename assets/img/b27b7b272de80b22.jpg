@@ -1,0 +1,620 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="HandheldFriendly" content="true">
+        <meta content="telephone=no" name="format-detection">
+        <!-- favicon -->
+        <link rel="shortcut icon" type="image/png" href="favicon.png" />
+        <!--[if (gt IE 9)|!(IE)]><!-->
+        <!-- custom CSS -->
+        <link href="/css/main.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="/css/swiper.min.css">
+        <!-- END custom CSS -->
+        <!--<![endif]-->
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+		 <!-- All JavaScript libraries -->
+		<script src="/js/jquery.min.js"></script>
+		
+		<!-- Custom JavaScript -->
+        <script src="/js/main.js"></script>
+        <title>安徽省烟花爆竹协会网站</title>
+        <meta name="keywords" content='安徽省烟花爆竹协会【官网】，安徽烟花爆竹协会【官方网站】，烟花爆竹协会官网'>
+<meta name="description" content='安徽省烟花爆竹协会成立于2002年4月，是跨行业、跨部门、跨多种经济成份的全省性社会团体。烟花爆竹生产企业、批发企业、零售经营者、运输企业、焰火燃放企业、安全评价机构与烟花爆竹相关监管部门及个人自愿参加组成。'>
+    </head>
+    <body>
+        <!-- Header -->
+         
+<header id="header" class="header">
+            <div class="header__top">
+                <div class="container">
+                    <div class="row topbg">
+                        <div class="col-sm-3">
+                            <div class="wrap-logo">
+                                <a href="/" class="logo"></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-offset-2 col-md-offset-5 col-sm-6 col-md-4 hidden-xs">
+                            <div class="col-xs-4 col-sm-5">
+                                
+                            </div>
+                            <div class="col-xs-6 col-sm-7">
+                                
+                            </div>
+                        </div>
+                    </div>
+					
+					
+				
+                </div>
+            </div>
+				<div class="minmenut">
+                               <a href="/">网站首页</a> 
+                            </div>
+            <div class="wsmenucontent overlapblackbg"></div>
+            <div class="wsmenuexpandermain slideRight">
+                <a id="navToggle" class="animated-arrow slideLeft">
+                    <span></span>
+                </a>
+            </div>
+            <div class="header_down">
+                <div class="container">
+                    <div class="wrapper clearfix bigmegamenu">
+                        <!--Main Menu HTML Code-->
+                        <nav class="wsmenu slideLeft clearfix">
+                            <ul class="mobile-sub wsmenu-list">
+                                
+
+                                <li class="active">
+                                    <span class="wsmenu-click"></span>
+                                    <a href="/">网站首页</a>
+                                </li>
+								<li>
+                                    <span class="wsmenu-click"></span>
+                                    <a href="/Content/1716.html">协会概况
+        							<span class="arrow"></span>
+                                </a>
+                                    <ul class="wsmenu-submenu">
+                                        <li>
+                                            <a href="/Content/1716.html">协会简介</a>
+                                        </li>
+										<li>
+                                            <a href="/Content/1715.html">协会章程</a>
+                                        </li>
+										<li>
+                                            <a href="/Content/1717.html">组织机构</a>
+                                        </li>
+										<li>
+                                            <a href="/Content/3380.html">理事会</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Content/3381.html">监事会</a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a href="/Content/1714.html">协会荣誉</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+								<li>
+                                    <span class="wsmenu-click"></span>
+                                    <a href="/NewList/882-1.html">新闻中心
+        							<span class="arrow"></span>
+                                </a>
+                                    <ul class="wsmenu-submenu">
+                                        <li>
+                                            <a href="/NewList/882-1.html">要闻速递</a>
+                                        </li>
+										<li>
+                                            <a href="/NewList/883-1.html">行业信息</a>
+                                        </li>
+                                        
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span class="wsmenu-click"></span>
+                                    <a href="/NewList/896-1.html">通知公告</a>
+                                </li>
+								 <li>
+                                    <span class="wsmenu-click"></span>
+                                    <a href="/NewList/907-1.html">基金会</a>
+                                </li>
+                                <li>
+                                    <span class="wsmenu-click"></span>
+                                    <a href="/NewList/889-1.html">会长单位</a>
+                                </li>
+                               
+                                <li>
+                                    <span class="wsmenu-click"></span>
+                                    <a href="/Content/1743.html">联系我们</a>
+                                </li>
+                               
+                                
+                               
+                                <li>
+                                    <div class="visible-xs col-sm-offset-5 col-sm-4">
+                                        <div class="col-sm-5">
+                                            
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <div class="exchange">
+                                               <div class="weather">
+                                                
+                                                <div class="weather__city">
+                                                    <em>协会官网</em>
+                                                    <div class="weather__city__list">
+                                                        <ul>
+                                                            <li class="active">
+                                                                <a href="/">协会官网</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/NewList/889-1.html">盛虹动态</a>
+                                                            </li>
+                                                           
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!--Menu HTML Code-->
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- END header -->
+        <!-- header slider -->
+        
+        <!-- END header slider -->
+        <!-- top news-->
+        <section>
+            <!-- top news -->
+            <!-- title -->
+            <div class="wrap wrap_white">
+			
+			<div class="container">
+			   <div class="ttw fir">
+			   <div class="left">
+			<div class="k0k">
+			
+			
+			
+			
+			      <div class="kkk_banner8">
+		<ul class="swiper-wrapper" style="width:100%;">
+			
+			<li class="swiper-slide"><a href="http://"><img src="/UserFiles/Image/202592953189121.jpeg" alt="8月31日晚，国家主席习近平和夫人彭..."></a></li>
+			
+			<li class="swiper-slide"><a href="http://"><img src="/UserFiles/Image/20258181721229315.jpg" alt="安徽省烟花爆竹协会四届五次会员大会暨..."></a></li>
+			
+			<li class="swiper-slide"><a href="http://"><img src="/UserFiles/Image/2025281356125629.jpg" alt="安徽省烟花爆竹协会第四届第三次常务理..."></a></li>
+			
+			
+		</ul>
+		<div class="btn0 kkk_ban_btn8"></div>
+		<!-- Add Pagination -->
+   
+    
+</div> 
+<script src="js/swiper.min.js"></script>
+  <script>
+	    var swiper = new Swiper('.kkk_banner8',{
+	    	autoplay:true,
+		
+	    	pagination : {
+				el:'.kkk_ban_btn8',
+			}
+	    });
+	</script>
+			
+			
+			</div>
+			</div>
+			 
+			 <div class="right">
+			<div class="kk">
+			<div class="k0k">
+			   <div class="k0k_title"><a href="/NewList/882-1.html">要闻速递</a></div>
+			   <div class="k0k_content">
+			     <div class="list">
+			     <ul>
+			     
+				   <li><a href="/Content/4225.html">· 中秋国庆双节烟花爆竹安全经营工作提示函</a><span>09-24</span></li>
+				   
+				   <li><a href="/Content/4224.html">· 李强对安全生产工作作出重要批示强调 坚决贯彻落实习近平总书记...</a><span>06-01</span></li>
+				   
+				   <li><a href="/Content/4223.html">· 习近平对湖南长沙浏阳市一烟花厂爆炸事故作出重要指示</a><span>05-06</span></li>
+				   
+				   <li><a href="/Content/4222.html">· 全省安全防范工作紧急视频会议召开</a><span>05-06</span></li>
+				   
+				   <li><a href="/Content/4221.html">· 张国清赶赴湖南长沙浏阳市烟花厂爆炸事故现场指导应急救援处置工...</a><span>05-06</span></li>
+				   
+				   <li><a href="/Content/4220.html">· 国务院安委办、应急管理部召开视频调度会议 部署“五一”假期前...</a><span>04-29</span></li>
+				   
+				   <li><a href="/Content/4217.html">· 关于自荐、推荐安徽省烟花爆竹协会第五届理事会会长等候选人选、...</a><span>03-12</span></li>
+				   
+				   <li><a href="/Content/4216.html">· 关于成立安徽省烟花爆竹协会换届工作 领导小组的通知</a><span>03-12</span></li>
+				   
+				   <li><a href="/Content/4213.html">· 烟花爆竹经营安全提示</a><span>02-28</span></li>
+				   
+				   <li><a href="/Content/4212.html">· 安徽省供销合作社联合社办公室关于做好春节前后安全防范工作的提...</a><span>02-25</span></li>
+				   
+				   <li><a href="/Content/4211.html">· 春节假期全省安全生产和自然灾害形势 总体稳定</a><span>02-24</span></li>
+				   
+				   <li><a href="/Content/4210.html">· 关于做好烟花爆竹安全经营管理工作的提示函</a><span>02-12</span></li>
+				   
+				   <li><a href="/Content/4209.html">· 国务院安委会办公室部署做好春节前后安全生产工作</a><span>02-12</span></li>
+				   
+				   
+				  
+				 </ul>
+			   </div>
+			   </div>
+			
+			
+			
+			
+			</div>
+			</div>
+			</div>
+			 <div class="clear">
+			
+			</div>
+			</div>
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div class="container adimg"><img src="/img/ad2.jpg" alt="0" /></div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div class="container sec">
+			   <div class="ttw">
+			   <div class="center">
+			
+			<div class="kk kk2">
+			<div class="k0k">
+			   <div class="k0k_title"><a href="/NewList/883-1.html">行业信息</a></div>
+			   <div class="k0k_content">
+			     <div class="list">
+			     <ul>
+				     
+				   <li><a href="/Content/4205.html">· 山西官宣：废止烟花爆竹禁令</a><span>12-23</span></li>
+				   
+				   <li><a href="/Content/4203.html">· 2025浏阳周末焰火秀圆满收官，微烟无硫烟花闪耀夜空</a><span>12-05</span></li>
+				   
+				   <li><a href="/Content/4201.html">· 南陵警方查处两起非法储存烟花爆竹案</a><span>11-18</span></li>
+				   
+				   <li><a href="/Content/4198.html">· 湖南一地曝光3起违规存储销售烟花爆竹典型案例</a><span>11-07</span></li>
+				   
+				   <li><a href="/Content/4197.html">· 今晚，“烟花光塔”惊艳浏阳夜空</a><span>10-29</span></li>
+				   
+				   <li><a href="/Content/4196.html">· 第十七届浏阳花炮文化节主题峰会举行 肖正波出席并致辞</a><span>10-29</span></li>
+				   
+				   <li><a href="/Content/4193.html">· 2025烟花爆竹产业高质量安全发展会在上栗举行</a><span>09-30</span></li>
+				   
+				   <li><a href="/Content/4188.html">· 拉萨今夜无眠！</a><span>08-25</span></li>
+				   
+				 </ul>
+			   </div>
+			   </div>
+			   
+			</div>
+			
+			</div>
+			</div>
+			 <div class="center">
+			<div class="kk">
+			<div class="k0k">
+			   <div class="k0k_title"><a href="/NewList/889-1.html">会长单位</a></div>
+			   <div class="k0k_content">
+			     <div class="list">
+			     <ul>
+				    
+				   <li><a href="/Content/4035.html">· 盛虹烟花开展2023年度反恐演练和安全知识培训</a><span>06-30</span></li>
+				   
+				   <li><a href="/Content/3960.html">· 盛虹集团开展安全培训和应急救援演练活动</a><span>06-21</span></li>
+				   
+				   <li><a href="/Content/3929.html">· 张海林赴盛虹公司调研</a><span>03-21</span></li>
+				   
+				   <li><a href="/Content/3901.html">· 汪斌赴盛虹集团检查指导工作</a><span>01-17</span></li>
+				   
+				   <li><a href="/Content/3884.html">· 省供销集团安环办赴盛虹开展消防安全隐患排查</a><span>12-06</span></li>
+				   
+				   <li><a href="/Content/3877.html">· 盛虹集团开展党员集体学习和团建活动</a><span>11-18</span></li>
+				   
+				   <li><a href="/Content/3876.html">· 市应急管理局检查盛虹集团安全工作</a><span>11-16</span></li>
+				   
+				   <li><a href="/Content/3874.html">· 盛虹集团开展“消防日”活动</a><span>11-16</span></li>
+				   
+				 </ul>
+			   </div>
+			   </div>
+			   
+			</div>
+			</div>
+			</div>
+			 <div class="right">
+			<div class="kk">
+			
+			
+			
+			<div class="k0k">
+			
+			
+			
+			   <div class="k0k_title"><a href="/NewList/896-1.html">通知公告</a></div>
+			   <div class="k0k_content hhh">
+			     <div class="list" id="quotation">
+			     <ul>
+				     
+				   <li><a href="/Content/4215.html">· 关于自荐、推荐安徽省烟花爆竹协会第五届理事会会长等候选人选、...</a><span>03-11</span></li>
+				   
+				   <li><a href="/Content/4214.html">· 关于成立安徽省烟花爆竹协会换届工作 领导小组的通知</a><span>03-11</span></li>
+				   
+				   <li><a href="/Content/4206.html">· 关于召开四届四次常务理事会议的通知</a><span>01-21</span></li>
+				   
+				   <li><a href="/Content/4179.html">· 安徽省烟花爆竹协会关于召开四届五次会员大会暨2025年烟花爆...</a><span>05-21</span></li>
+				   
+				   <li><a href="/Content/4150.html">· 关于召开四届三次常务理事会议的通知</a><span>01-06</span></li>
+				   
+				   <li><a href="/Content/4087.html">· 关于召开安徽省烟花爆竹协会四届四次会员大会暨展销会的通知</a><span>05-28</span></li>
+				   
+				   <li><a href="/Content/4085.html">· 关于缴纳2024年度会费的通知</a><span>05-17</span></li>
+				   
+				   <li><a href="/Content/4067.html">· 关于规范烟花爆竹经营行为的倡议书</a><span>02-02</span></li>
+				   
+				   <li><a href="/Content/4065.html">· 招聘公告</a><span>01-31</span></li>
+				   
+				   <li><a href="/Content/4062.html">· 关于召开四届二次常务理事会议的通知</a><span>01-04</span></li>
+				   
+				   <li><a href="/Content/4042.html">· 关于庞灝等工作职务的通知</a><span>07-04</span></li>
+				   
+				   <li><a href="/Content/4031.html">· 关于推荐、自荐副会长候选人的函</a><span>05-24</span></li>
+				   
+				 </ul>
+			   </div>
+			   </div>
+			
+			
+			<script type="text/javascript">
+//文字纵向滚动
+$(function() { 
+    var $this = $("#quotation"); 
+    var scrollTimer;
+    
+    $this.hover(function() { 
+        clearInterval(scrollTimer); 
+        }, function() { 
+        scrollTimer = setInterval(function() { 
+        scrollNews($this); 
+        },3000); 
+    }).trigger("mouseleave"); 
+    
+    function scrollNews(obj) { 
+        var $self = obj.find("ul"); 
+        var lineHeight = $self.find("li:first").height(); 
+        $self.animate({ 
+        "marginTop": -lineHeight + "px" 
+        },500, function() { 
+        $self.css({ 
+        marginTop: 0 
+        }).find("li:first").appendTo($self); 
+        }) 
+    } 
+}) 
+
+</script>
+			
+			
+			<a href="#" class="thumbnail__link">
+                                    <img src="img/ad3.jpg" height="140" width="270" alt="News" style="margin-top:13px;">
+                                </a>
+			</div>
+			</div>
+			</div>
+			 <div class="clear">
+			
+			</div>
+			</div>
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+                
+            </div>
+            <!-- END title -->
+            
+            <!-- /container-->
+        </section>
+        <!-- /top news -->
+        
+        
+        <!-- Footer -->
+        
+
+
+<section class="wrap wrap_gray">
+            <div class="container">
+                 <div class="row">
+                <div class="linkss" style="padding:5px;line-height:22px;">友情链接：
+				 
+				 
+				  
+       <a href='http://coop.ah.gov.cn' target="_blank">安徽供销合作社联合社</a>
+       
+       <a href='http://www.ahnpo.cn' target="_blank">安徽省社会组织信息平台</a>
+       
+       <a href='http://yjt.ah.gov.cn/' target="_blank">安徽省应急厅</a>
+       
+       <a href='http://www.ahga.gov.cn/' target="_blank">安徽省公安厅</a>
+       
+       <a href='http://amr.ah.gov.cn/' target="_blank">安徽省市场监督管理局</a>
+       
+       <a href='http://www.ahgxjt.cn' target="_blank">安徽省供销集团有限公司</a>
+       
+       <a href='http://www.zs-ah.com/' target="_blank">安徽双赢再生资源集团</a>
+       
+				 
+				 
+    
+           </div> </div>
+            </div>
+        </section>
+
+
+
+<footer class="footer slate_gray">
+            <div class="container">
+                <div class="row">
+                    <div class="">
+                        <p class="copyright">Copyright &copy; 2003.安徽省烟花爆竹协会 All rights reserved.
+                        <!--a href="/Content/3919.html">免责声明</a-->
+				      </p>
+                            
+                            
+                            
+                 <p></p>           
+                    
+
+ <p class="copyright" style="font-size:12px">  本网站的图片、文字之类如果涉及侵权，请及时通知我们(0551-65735810)，本网站将在第一时间及时删除。
+</p>
+ <p class="copyright" style="font-size:12px">凡以任何方式登陆本网站或直接、间接使用本网站资料者，视为自愿接受本网站声明的约束。 </p>  
+
+                         
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
+        <!-- END Footer -->
+
+
+
+<!--<a href="#"><img src="/pf2.jpg" border="0"  alt='公司长期对外出售钢屑、钢刨花，每月约150吨”
+'></a>-->
+
+  <!--div id="img" style="position:absolute;z-index=99;">
+<a href="http://www.ah-yh.com/Content/4133.html"><img src="/pf11.jpg" border="0"  alt='
+'></a> 
+
+</!--div-->
+<SCRIPT LANGUAGE="JavaScript">
+    var xPos = document.body.clientWidth - 30;
+    var yPos = document.body.clientHeight / 3;
+    var step = 0.5;
+    var delay = 5;
+    var height = 0;
+    var Hoffset = 0;
+    var Woffset = 0;
+    var yon = 0;
+    var xon = 0;
+    var pause = true;
+    var interval;
+    img.style.top = yPos;
+    function changePos() {
+        width = document.body.clientWidth;
+        height = document.body.clientHeight;
+        Hoffset = img.offsetHeight;
+        Woffset = img.offsetWidth;
+        img.style.left = xPos + document.body.scrollLeft + "px";
+        img.style.top = yPos + document.body.scrollTop + "px";
+        if (yon) {
+            yPos = yPos + step;
+        } else {
+            yPos = yPos - step;
+        }
+        if (yPos < 0) {
+            yon = 1;
+            yPos = 0;
+        }
+        if (yPos >= (height - Hoffset)) {
+            yon = 0;
+            yPos = (height - Hoffset);
+        }
+        if (xon) {
+            xPos = xPos + step;
+        } else {
+            xPos = xPos - step;
+        }
+        if (xPos < 0) {
+            xon = 1;
+            xPos = 0;
+        }
+        if (xPos >= (width - Woffset)) {
+            xon = 0;
+            xPos = (width - Woffset);
+        }
+    }
+    function start() {
+        img.visibility = "visible";
+        interval = setInterval('changePos()', delay);
+    }
+    start();
+    img.onmouseover = function () {
+        clearInterval(interval);
+        interval = null;
+    }
+    img.onmouseout = function () {
+        interval = setInterval('changePos()', delay);
+    }
+</script>
+
+
+
+       
+    </body>
+</html>
