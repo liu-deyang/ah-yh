@@ -38,7 +38,14 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .topbar .wrap { display: flex; justify-content: space-between; gap: 16px; min-height: 34px; align-items: center; }
 .topbar a:hover { color: #fff; }
 
-.header { background: var(--card); border-bottom: 1px solid var(--line); }
+.header {
+  background-color: #7ec8ef;
+  background-image: url("../assets/img/site-bg.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+}
 .brand { display: flex; align-items: center; gap: 14px; padding: 18px 0 14px; }
 .seal {
   width: 58px; height: 58px; flex: none;
@@ -48,8 +55,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
   font-family: "Noto Serif SC", "Songti SC", serif;
   font-weight: 700; line-height: 1.05; letter-spacing: 1px; text-align: center;
 }
-.brand-logo { display: flex; align-items: center; min-height: 92px; padding: 10px 0; }
-.brand-logo img { height: 88px; width: auto; max-width: min(520px, 100%); object-fit: contain; }
+.brand-logo { display: flex; align-items: center; min-height: 176px; padding: 16px 0 18px; }
+.brand-logo img { height: 156px; width: auto; max-width: min(760px, 100%); object-fit: contain; filter: drop-shadow(0 1px 0 rgba(255,255,255,.85)); }
 .brand h1 { margin: 0; font-family: "Noto Serif SC", "Songti SC", serif; font-size: 28px; font-weight: 700; letter-spacing: 1px; }
 .brand p { margin: 2px 0 0; color: var(--muted); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; }
 
@@ -173,7 +180,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 @media (max-width: 860px) {
   body { background-attachment: scroll; }
   .hero, .grid3, .about, .layout, .split { grid-template-columns: 1fr; }
-  .brand-logo img { height: 64px; }
+  .brand-logo { min-height: 120px; padding: 12px 0; }
+  .brand-logo img { height: 104px; }
   .about-side { border-left: 0; padding-left: 0; border-top: 1px solid rgba(255,255,255,.2); padding-top: 14px; }
   .slide img { height: 210px; }
   .nav-toggle { display: block; }
