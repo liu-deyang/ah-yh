@@ -15,7 +15,12 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   color: var(--ink);
-  background: var(--paper);
+  background-color: #eaf6fd;
+  background-image: url("../assets/img/site-bg.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
   font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 16px;
   line-height: 1.7;
@@ -166,6 +171,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .ok { color: #1d6b3a; }
 
 @media (max-width: 860px) {
+  body { background-attachment: scroll; }
   .hero, .grid3, .about, .layout, .split { grid-template-columns: 1fr; }
   .brand-logo img { height: 64px; }
   .about-side { border-left: 0; padding-left: 0; border-top: 1px solid rgba(255,255,255,.2); padding-top: 14px; }
