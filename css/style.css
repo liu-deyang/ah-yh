@@ -65,7 +65,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .menu { display: flex; flex: 1; list-style: none; margin: 0; padding: 0; }
 .menu > li { position: relative; }
 .menu > li > a, .nav-btn {
-  display: block; color: #fff; padding: 12px 16px; font-size: 15px;
+  display: block; color: #fff; padding: 14px 14px; font-size: 20px; font-weight: 500;
 }
 .menu > li > a:hover, .menu > li:focus-within > a, .menu > li.active > a { background: rgba(0,0,0,.15); }
 .dropdown {
@@ -73,11 +73,11 @@ button, input, textarea, select { font: inherit; color: inherit; }
   background: #fff; color: var(--ink); box-shadow: var(--shadow); border: 1px solid var(--line); padding: 6px 0;
 }
 .menu > li:hover > .dropdown, .menu > li:focus-within > .dropdown { display: block; }
-.dropdown a { display: block; padding: 8px 16px; }
+.dropdown a { display: block; padding: 10px 16px; font-size: 17px; }
 .dropdown a:hover { background: #e7f4fb; color: var(--red); }
 .search { display: flex; align-items: center; padding: 8px 0; }
 .search input {
-  width: 168px; border: 0; border-radius: 2px; padding: 6px 10px; background: rgba(255,255,255,.92);
+  width: 148px; border: 0; border-radius: 2px; padding: 8px 10px; font-size: 16px; background: rgba(255,255,255,.92);
 }
 .search button { margin-left: 6px; border: 0; background: var(--gold); color: #fff; padding: 6px 10px; cursor: pointer; }
 .nav-toggle { display: none; margin-left: auto; background: transparent; color: #fff; border: 0; padding: 10px; cursor: pointer; }
