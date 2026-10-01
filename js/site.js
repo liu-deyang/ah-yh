@@ -217,6 +217,8 @@ function docMeta(item) {
 function dressProse(root) {
   root.querySelectorAll("p").forEach((p) => {
     if (p.closest("table")) return;
+    // 后台已经指定过版式的段落，按工作人员的选择显示
+    if (p.classList.contains("center-line") || p.classList.contains("mid") || p.classList.contains("indent") || p.classList.contains("sign-line") || p.classList.contains("plain")) return;
     const raw = (p.textContent || "").replace(/\u00a0/g, " ");
     const text = raw.trim();
     if (!text) {

@@ -190,7 +190,9 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .prose p { margin: 0 0 0.75em; }
 .prose p.indent { text-indent: 2em; text-align: justify; }
 .prose p.center-line { text-align: center; font-weight: 700; text-indent: 0; margin: 1.05em 0 0.55em; }
+.prose p.mid { text-align: center; text-indent: 0; font-weight: 400; }
 .prose p.sign-line { text-align: right; text-indent: 0; }
+.prose p.plain { text-indent: 0; text-align: left; }
 .prose img { display: block; max-width: 100%; height: auto; margin: 12px auto; }
 .prose table { width: 100%; border-collapse: collapse; margin: 12px 0; }
 .prose td, .prose th { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
@@ -206,7 +208,13 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .legal { border-top: 1px solid rgba(255,255,255,.12); padding-top: 12px; font-size: 13px; color: #b7d0e2; }
 .legal a { color: #d6eeff; }
 
-.admin-shell { width: min(1080px, calc(100% - 32px)); margin: 24px auto 48px; }
+.admin-shell { width: min(1180px, calc(100% - 32px)); margin: 24px auto 48px; }
+.rte { border: 1px solid var(--line); background: #fff; }
+.rte-bar { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px; background: #f4f8fb; border-bottom: 1px solid var(--line); }
+.rte-bar button { background: #fff; border: 1px solid #c5d7e4; padding: 6px 10px; cursor: pointer; font-size: 14px; }
+.rte-bar button:hover { border-color: var(--red); color: var(--red); }
+.rte-body { min-height: 420px; max-height: 68vh; overflow: auto; outline: none; }
+.rte-body.prose { padding: 16px 20px 28px; }
 .login-card, .editor { background: var(--card); border: 1px solid var(--line); padding: 28px; box-shadow: var(--shadow); }
 .login-card { width: min(420px, 100%); margin: 48px auto; }
 .login-card h1, .editor h1 { font-family: "Noto Serif SC", serif; margin: 0 0 8px; }
