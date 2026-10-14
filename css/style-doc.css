@@ -25,8 +25,11 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 .mast { background: #fff; border-bottom: 1px solid var(--line); }
 .mast-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 0 14px; }
-.brand-logo { min-width: 0; }
-.brand-logo img { height: auto; width: auto; max-height: 188px; max-width: 100%; object-fit: contain; display: block; }
+.brand-logo { display: block; flex: none; height: 94px; width: min(552px, 100%); overflow: hidden; }
+.brand-logo img {
+  width: calc(100% * 655 / 423); height: auto; max-width: none; max-height: none;
+  margin-left: calc(100% * -15 / 423); margin-top: calc(100% * -67 / 423); display: block;
+}
 .mast-side { text-align: right; color: var(--muted); font-size: 13px; }
 .mast-side strong { display: block; margin-top: 4px; color: var(--ink); font-size: 15px; font-weight: 600; }
 
