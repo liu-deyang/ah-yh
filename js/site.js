@@ -1,4 +1,12 @@
 const app = document.getElementById("app");
+const root = document.body.dataset.root || "";
+const docTheme = document.body.dataset.theme === "doc";
+
+function asset(src) {
+  if (!src) return "";
+  if (/^(https?:|data:|\/\/)/.test(src)) return src;
+  return root + String(src).replace(/^\//, "");
+}
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>"']/g, (ch) => ({
@@ -29,12 +37,22 @@ function newsItem(item) {
   return `<li><a href="article.html?id=${esc(item.id)}">${esc(item.title)}</a><time>${esc(item.date)}</time></li>`;
 }
 
-function panel(title, href, items) {
+function panel(title, href, items, extra) {
   const more = href ? `<a href="${href}">更多</a>` : "";
   const list = items.length
     ? `<ul class="news-list">${items.map(newsItem).join("")}</ul>`
     : `<div class="empty">暂无内容</div>`;
-  return `<section class="block"><h2><span>${esc(title)}</span>${more}</h2>${list}</section>`;
+  const cls = extra ? `block ${extra}` : "block";
+  return `<section class="${cls}"><h2><span>${esc(title)}</span>${more}</h2>${list}</section>`;
+}
+
+function proseHtml(html) {
+  let out = sanitize(html);
+  if (!root || !out) return out;
+  return out.replace(/(\s(?:src|href)=["'])(?!https?:|data:|#|mailto:|\/\/)([^"']+)/gi, (full, attr, url) => {
+    if (url.startsWith("../") || url.startsWith(root)) return full;
+    return attr + root + url.replace(/^\.?\//, "");
+  });
 }
 
 async function loadData() {
@@ -45,7 +63,7 @@ async function loadData() {
   } catch (err) {
     fromServer = false;
   }
-  const res = await fetch(fromServer ? "/api/site" : "data/site.json");
+  const res = await fetch(fromServer ? "/api/site" : root + "data/site.json");
   if (!res.ok) throw new Error("站点数据加载失败");
   const published = await res.json();
   if (fromServer) return published;
@@ -64,7 +82,7 @@ function chrome(data, active) {
   const pages = data.pages || [];
   const aboutKids = pages.filter((item) => item.group === "协会概况");
   const brand = meta.logo
-    ? `<a class="brand-logo" href="index.html"><img src="${esc(meta.logo)}" alt="${esc(meta.name || "安徽省烟花爆竹协会")}"></a>`
+    ? `<a class="brand-logo" href="index.html"><img src="${esc(asset(meta.logo))}" alt="${esc(meta.name || "安徽省烟花爆竹协会")}"></a>`
     : `<div class="brand"><div class="seal">皖<br>协</div><div><h1>${esc(meta.name || "安徽省烟花爆竹协会")}</h1><p>${esc(meta.nameEn || "")}</p></div></div>`;
   const dropdown = (items) => items.length
     ? `<div class="dropdown">${items.map((item) => `<a href="${item.href}">${esc(item.label)}</a>`).join("")}</div>`
@@ -76,12 +94,15 @@ function chrome(data, active) {
   ]);
   const mark = (key) => active === key ? "active" : "";
   const links = (data.friendLinks || []).map((item) => `<a href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.name)}</a>`).join("");
+  const header = docTheme
+    ? `<header class="header"><div class="wrap header-row">${brand}<div class="mark-fire" aria-hidden="true"><i></i></div></div></header>`
+    : `<header class="header"><div class="sky-fire" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="wrap">${brand}</div></header>`;
+  const edition = docTheme
+    ? `<a href="${root}index.html">查看天蓝版</a>`
+    : `<a href="doc/index.html">查看红金公文版</a>`;
   return `
     <div class="topbar"><div class="wrap"><span>欢迎访问${esc(meta.name || "安徽省烟花爆竹协会")}</span><span>电话 ${esc(meta.phone || "")}</span></div></div>
-    <header class="header">
-      <div class="sky-fire" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-      <div class="wrap">${brand}</div>
-    </header>
+    ${header}
     <nav class="nav"><div class="wrap">
       <button class="nav-toggle" type="button" aria-label="打开菜单">菜单</button>
       <ul class="menu">
@@ -105,7 +126,7 @@ function chrome(data, active) {
       <div class="legal">
         <div>Copyright © 2003 ${esc(meta.name || "安徽省烟花爆竹协会")} All rights reserved.</div>
         <div>本网站的图片、文字之类如果涉及侵权，请及时通知我们（${esc(meta.phone || "0551-65735810")}），本网站将在第一时间删除。</div>
-        <div style="margin-top:8px"><a href="admin.html">管理后台</a></div>
+        <div style="margin-top:8px"><a href="${root}admin.html">管理后台</a>　${edition}</div>
       </div>
     </div></footer>`;
 }
@@ -130,7 +151,7 @@ function renderHome(data) {
   const banners = data.banners || [];
   const slides = banners.map((item, index) => `
     <a class="slide${index === 0 ? " on" : ""}" href="list.html?cat=news">
-      <img src="${esc(item.image)}" alt="${esc(item.title)}">
+      <img src="${esc(asset(item.image))}" alt="${esc(item.title)}">
       <span>${esc(item.title)}</span>
     </a>`).join("");
   const dots = banners.map((_, index) => `<button type="button" class="${index === 0 ? "on" : ""}" data-i="${index}" aria-label="第${index + 1}张"></button>`).join("");
@@ -139,22 +160,33 @@ function renderHome(data) {
     : `<div class="slider"><div class="slide on"><span>安徽省烟花爆竹协会</span></div></div>`;
   const meta = data.meta || {};
   const cover = banners[1] || banners[0];
+  const columns = docTheme
+    ? `<section class="notice-wrap">${panel("通知公告", "list.html?cat=notice", articlesIn(data, "notice").slice(0, 5), "block-notice")}</section>
+      <section class="grid2">
+        ${panel("行业信息", "list.html?cat=industry", articlesIn(data, "industry").slice(0, 6))}
+        ${panel("会长单位", "list.html?cat=president", articlesIn(data, "president").slice(0, 6))}
+      </section>`
+    : `<section class="grid3">
+        ${panel("行业信息", "list.html?cat=industry", articlesIn(data, "industry").slice(0, 6))}
+        ${panel("通知公告", "list.html?cat=notice", articlesIn(data, "notice").slice(0, 6))}
+        ${panel("会长单位", "list.html?cat=president", articlesIn(data, "president").slice(0, 6))}
+      </section>`;
+  const honors = docTheme
+    ? `<div class="honors"><span>5A级社会组织</span><span>示范行业协会</span><span>百优社会组织</span><span>全国烟花爆竹行业优秀社团</span></div>`
+    : "";
   app.querySelector("#main").innerHTML = `
     <div class="wrap">
       <section class="hero">
         ${slider}
         ${panel("要闻速递", "list.html?cat=news", articlesIn(data, "news").slice(0, 8))}
       </section>
-      <section class="grid3">
-        ${panel("行业信息", "list.html?cat=industry", articlesIn(data, "industry").slice(0, 6))}
-        ${panel("通知公告", "list.html?cat=notice", articlesIn(data, "notice").slice(0, 6))}
-        ${panel("会长单位", "list.html?cat=president", articlesIn(data, "president").slice(0, 6))}
-      </section>
+      ${columns}
       <section class="about">
-        ${cover ? `<img class="about-photo" src="${esc(cover.image)}" alt="${esc(cover.title)}">` : ""}
+        ${cover ? `<img class="about-photo" src="${esc(asset(cover.image))}" alt="${esc(cover.title)}">` : ""}
         <div>
           <h2>协会简介</h2>
           <p>${esc(meta.summary || "安徽省烟花爆竹协会成立于2002年4月，是全省性社会团体。")}</p>
+          ${honors}
           <a class="btn" href="page.html?slug=about">查看全文</a>
         </div>
         <div class="about-side">
@@ -259,7 +291,7 @@ function renderArticle(data) {
           <article class="article read">
             <h1>${esc(item.title)}</h1>
             ${docMeta(item)}
-            <div class="prose">${sanitize(item.html) || "<p>暂无正文</p>"}</div>
+            <div class="prose">${proseHtml(item.html) || "<p>暂无正文</p>"}</div>
           </article>
         </div>
       </div>
@@ -284,7 +316,7 @@ function renderPage(data) {
           <article class="doc read">
             <h1>${esc(item.title)}</h1>
             ${docMeta(item)}
-            <div class="prose">${sanitize(item.html) || "<p>暂无内容</p>"}</div>
+            <div class="prose">${proseHtml(item.html) || "<p>暂无内容</p>"}</div>
           </article>
         </div>
       </div>
