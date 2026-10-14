@@ -25,7 +25,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 .mast { background: #fff; border-bottom: 1px solid var(--line); }
 .mast-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 0 14px; }
-.brand-logo img { height: 78px; width: auto; max-width: min(460px, 70vw); object-fit: contain; display: block; }
+.brand-logo img { height: 94px; width: auto; max-width: min(552px, 84vw); object-fit: contain; display: block; }
 .mast-side { text-align: right; color: var(--muted); font-size: 13px; }
 .mast-side strong { display: block; margin-top: 4px; color: var(--ink); font-size: 15px; font-weight: 600; }
 
