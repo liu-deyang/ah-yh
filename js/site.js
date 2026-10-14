@@ -95,13 +95,14 @@ function chrome(data, active) {
   const mark = (key) => active === key ? "active" : "";
   const links = (data.friendLinks || []).map((item) => `<a href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.name)}</a>`).join("");
   const header = docTheme
-    ? `<header class="header"><div class="wrap header-row">${brand}<div class="mark-fire" aria-hidden="true"><i></i></div></div></header>`
+    ? `<header class="mast"><div class="wrap mast-top">${brand}<div class="mast-side"><span>欢迎访问</span><strong>电话 ${esc(meta.phone || "")}</strong></div></div></header>`
     : `<header class="header"><div class="sky-fire" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="wrap">${brand}</div></header>`;
   const edition = docTheme
     ? `<a href="${root}index.html">查看天蓝版</a>`
-    : `<a href="doc/index.html">查看红金公文版</a>`;
+    : `<a href="doc/index.html">查看墨青版</a>`;
+  const topbar = docTheme ? "" : `<div class="topbar"><div class="wrap"><span>欢迎访问${esc(meta.name || "安徽省烟花爆竹协会")}</span><span>电话 ${esc(meta.phone || "")}</span></div></div>`;
   return `
-    <div class="topbar"><div class="wrap"><span>欢迎访问${esc(meta.name || "安徽省烟花爆竹协会")}</span><span>电话 ${esc(meta.phone || "")}</span></div></div>
+    ${topbar}
     ${header}
     <nav class="nav"><div class="wrap">
       <button class="nav-toggle" type="button" aria-label="打开菜单">菜单</button>
@@ -147,7 +148,57 @@ function sideNav(data, current) {
   return `<aside class="side"><h2>栏目</h2>${pageLinks}${catLinks}</aside>`;
 }
 
+function renderDocHome(data) {
+  const banners = data.banners || [];
+  const cover = banners[1] || banners[0];
+  const meta = data.meta || {};
+  const news = articlesIn(data, "news");
+  const lead = news[0];
+  const row = (item) => `<li><a href="article.html?id=${esc(item.id)}">${esc(item.title)}</a><time>${esc(item.date)}</time></li>`;
+  app.querySelector("#main").innerHTML = `
+    <div class="wrap">
+      <section class="lead">
+        ${cover ? `<a class="lead-photo" href="list.html?cat=news"><img src="${esc(asset(cover.image))}" alt="${esc(cover.title)}"><span>${esc(cover.title)}</span></a>` : ""}
+        <div class="lead-copy">
+          <p class="kicker">要闻速递</p>
+          ${lead ? `<a class="lead-title" href="article.html?id=${esc(lead.id)}">${esc(lead.title)}</a><time class="lead-date">${esc(lead.date)}</time>` : ""}
+          <ul class="lead-more">${news.slice(1, 5).map(row).join("")}</ul>
+          <a class="text-more" href="list.html?cat=news">全部要闻</a>
+        </div>
+      </section>
+      <section class="split">
+        <div>
+          <h2>通知公告</h2>
+          <ol class="notice-ol">${articlesIn(data, "notice").slice(0, 5).map(row).join("")}</ol>
+          <a class="text-more" href="list.html?cat=notice">全部公告</a>
+        </div>
+        <div>
+          <h2>行业信息</h2>
+          <ul class="quiet">${articlesIn(data, "industry").slice(0, 5).map(row).join("")}</ul>
+          <a class="text-more" href="list.html?cat=industry">全部行业信息</a>
+        </div>
+      </section>
+      <section class="pres">
+        <h2>会长单位</h2>
+        <ul class="quiet">${articlesIn(data, "president").slice(0, 4).map(row).join("")}</ul>
+        <a class="text-more" href="list.html?cat=president">全部会长单位</a>
+      </section>
+      <section class="intro">
+        <div>
+          <h2>协会简介</h2>
+          <p>${esc(meta.summary || "安徽省烟花爆竹协会成立于2002年4月，是全省性社会团体。")}</p>
+          <p class="intro-meta">${esc(meta.founded || "2002年4月")}成立 · 5A级社会组织 · 示范行业协会 · 百优社会组织 · 全国烟花爆竹行业优秀社团</p>
+          <a class="text-more" href="page.html?slug=about">查看全文</a>
+        </div>
+      </section>
+    </div>`;
+}
+
 function renderHome(data) {
+  if (docTheme) {
+    renderDocHome(data);
+    return;
+  }
   const banners = data.banners || [];
   const slides = banners.map((item, index) => `
     <a class="slide${index === 0 ? " on" : ""}" href="list.html?cat=news">
@@ -160,33 +211,22 @@ function renderHome(data) {
     : `<div class="slider"><div class="slide on"><span>安徽省烟花爆竹协会</span></div></div>`;
   const meta = data.meta || {};
   const cover = banners[1] || banners[0];
-  const columns = docTheme
-    ? `<section class="notice-wrap">${panel("通知公告", "list.html?cat=notice", articlesIn(data, "notice").slice(0, 5), "block-notice")}</section>
-      <section class="grid2">
-        ${panel("行业信息", "list.html?cat=industry", articlesIn(data, "industry").slice(0, 6))}
-        ${panel("会长单位", "list.html?cat=president", articlesIn(data, "president").slice(0, 6))}
-      </section>`
-    : `<section class="grid3">
-        ${panel("行业信息", "list.html?cat=industry", articlesIn(data, "industry").slice(0, 6))}
-        ${panel("通知公告", "list.html?cat=notice", articlesIn(data, "notice").slice(0, 6))}
-        ${panel("会长单位", "list.html?cat=president", articlesIn(data, "president").slice(0, 6))}
-      </section>`;
-  const honors = docTheme
-    ? `<div class="honors"><span>5A级社会组织</span><span>示范行业协会</span><span>百优社会组织</span><span>全国烟花爆竹行业优秀社团</span></div>`
-    : "";
   app.querySelector("#main").innerHTML = `
     <div class="wrap">
       <section class="hero">
         ${slider}
         ${panel("要闻速递", "list.html?cat=news", articlesIn(data, "news").slice(0, 8))}
       </section>
-      ${columns}
+      <section class="grid3">
+        ${panel("行业信息", "list.html?cat=industry", articlesIn(data, "industry").slice(0, 6))}
+        ${panel("通知公告", "list.html?cat=notice", articlesIn(data, "notice").slice(0, 6))}
+        ${panel("会长单位", "list.html?cat=president", articlesIn(data, "president").slice(0, 6))}
+      </section>
       <section class="about">
         ${cover ? `<img class="about-photo" src="${esc(asset(cover.image))}" alt="${esc(cover.title)}">` : ""}
         <div>
           <h2>协会简介</h2>
           <p>${esc(meta.summary || "安徽省烟花爆竹协会成立于2002年4月，是全省性社会团体。")}</p>
-          ${honors}
           <a class="btn" href="page.html?slug=about">查看全文</a>
         </div>
         <div class="about-side">
