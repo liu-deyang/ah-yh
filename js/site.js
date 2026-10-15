@@ -22,9 +22,20 @@ function sanitize(html) {
   return String(html || "").replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "");
 }
 
+const HIDDEN_CATS = new Set(["president"]);
+
 function catName(data, id) {
   const cat = (data.categories || []).find((item) => item.id === id);
   return cat ? cat.name : "";
+}
+
+function visibleCategories(data) {
+  return (data.categories || []).filter((item) => !HIDDEN_CATS.has(item.id));
+}
+
+function isPublicArticle(item) {
+  const cats = item.categories || [];
+  return !cats.length || cats.some((id) => !HIDDEN_CATS.has(id));
 }
 
 function articlesIn(data, catId) {
@@ -112,7 +123,6 @@ function chrome(data, active) {
         <li class="${mark("news")}"><a href="list.html?cat=news">新闻中心</a>${newsMenu}</li>
         <li class="${mark("notice")}"><a href="list.html?cat=notice">通知公告</a></li>
         <li class="${mark("foundation")}"><a href="list.html?cat=foundation">基金会</a></li>
-        <li class="${mark("president")}"><a href="list.html?cat=president">会长单位</a></li>
         <li class="${mark("contact")}"><a href="page.html?slug=contact">联系我们</a></li>
       </ul>
       <form class="search" action="list.html" method="get">
@@ -142,7 +152,7 @@ function bindNav() {
 
 function sideNav(data, current) {
   const pages = (data.pages || []).filter((item) => item.group === "协会概况" || item.slug === "contact");
-  const cats = data.categories || [];
+  const cats = visibleCategories(data);
   const pageLinks = pages.map((item) => `<a class="${current === "page:" + item.slug ? "on" : ""}" href="page.html?slug=${esc(item.slug)}">${esc(item.title)}</a>`).join("");
   const catLinks = cats.map((item) => `<a class="${current === "cat:" + item.id ? "on" : ""}" href="list.html?cat=${esc(item.id)}">${esc(item.name)}</a>`).join("");
   return `<aside class="side"><h2>栏目</h2>${pageLinks}${catLinks}</aside>`;
@@ -177,11 +187,6 @@ function renderDocHome(data) {
           <ul class="quiet">${articlesIn(data, "industry").slice(0, 5).map(row).join("")}</ul>
           <a class="text-more" href="list.html?cat=industry">全部行业信息</a>
         </div>
-      </section>
-      <section class="pres">
-        <h2>会长单位</h2>
-        <ul class="quiet">${articlesIn(data, "president").slice(0, 4).map(row).join("")}</ul>
-        <a class="text-more" href="list.html?cat=president">全部会长单位</a>
       </section>
       <section class="intro">
         <div>
@@ -220,7 +225,6 @@ function renderHome(data) {
       <section class="grid3">
         ${panel("行业信息", "list.html?cat=industry", articlesIn(data, "industry").slice(0, 6))}
         ${panel("通知公告", "list.html?cat=notice", articlesIn(data, "notice").slice(0, 6))}
-        ${panel("会长单位", "list.html?cat=president", articlesIn(data, "president").slice(0, 6))}
       </section>
       <section class="about">
         ${cover ? `<img class="about-photo" src="${esc(asset(cover.image))}" alt="${esc(cover.title)}">` : ""}
@@ -253,17 +257,20 @@ function renderList(data) {
   const q = qs("q").trim();
   const cat = qs("cat");
   let title = "搜索结果";
-  let items = data.articles || [];
+  let items = (data.articles || []).filter(isPublicArticle);
   if (q) {
     items = items.filter((item) => (item.title || "").includes(q));
     title = `搜索：${q}`;
-  } else if (cat) {
+  } else if (cat && !HIDDEN_CATS.has(cat)) {
     items = articlesIn(data, cat);
     title = catName(data, cat) || "栏目";
+  } else if (cat) {
+    items = [];
+    title = "栏目";
   } else {
     items = [...items].sort((a, b) => String(b.date).localeCompare(String(a.date)));
   }
-  const note = !q && cat
+  const note = !q && cat && !HIDDEN_CATS.has(cat)
     ? `<p class="hint">以下为从原站同步的最近内容。</p>`
     : "";
   app.querySelector("#main").innerHTML = `
@@ -320,14 +327,15 @@ function renderArticle(data) {
     main.innerHTML = `<div class="wrap page"><div class="empty">文章不存在或已删除。</div></div>`;
     return;
   }
-  const cat = (item.categories || [])[0] || "";
-  const catLabel = catName(data, cat) || "新闻";
+  const cat = (item.categories || []).find((id) => !HIDDEN_CATS.has(id)) || "";
+  const catLabel = cat ? (catName(data, cat) || "新闻") : "";
+  const crumbCat = cat ? ` &gt;&gt; <a href="list.html?cat=${esc(cat)}">${esc(catLabel)}</a>` : "";
   main.innerHTML = `
     <div class="wrap page">
       <div class="layout">
         ${sideNav(data, "cat:" + cat)}
         <div>
-          <div class="crumb-bar">当前位置：<a href="index.html">首页</a> &gt;&gt; <a href="list.html?cat=${esc(cat)}">${esc(catLabel)}</a></div>
+          <div class="crumb-bar">当前位置：<a href="index.html">首页</a>${crumbCat}</div>
           <article class="article read">
             <h1>${esc(item.title)}</h1>
             ${docMeta(item)}
